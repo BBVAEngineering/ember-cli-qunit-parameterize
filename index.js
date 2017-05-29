@@ -2,7 +2,6 @@
 
 var debug = require('debug')('broccoli-stew:map');
 var Funnel = require('broccoli-funnel');
-var mergeTrees = require('broccoli-merge-trees');
 var map = require('broccoli-stew').map;
 
 module.exports = {
