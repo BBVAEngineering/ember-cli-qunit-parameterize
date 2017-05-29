@@ -1,6 +1,5 @@
 'use strict';
 
-var debug = require('debug')('broccoli-stew:map');
 var Funnel = require('broccoli-funnel');
 var map = require('broccoli-stew').map;
 
