@@ -22,7 +22,10 @@
     "url": "https://github.com/BBVAEngineering/ember-cli-qunit-parameterize/issues"
   },
   "homepage": "https://github.com/BBVAEngineering/ember-cli-qunit-parameterize",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-bbva": "^2.0.0"
+  },
   "dependencies": {
     "broccoli-funnel": "^1.2.0",
     "broccoli-stew": "^1.5.0",
