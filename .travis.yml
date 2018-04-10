@@ -2,18 +2,20 @@
 language: node_js
 
 node_js:
-  - "7"
-  - "8"
-  - "9"
+  - "stable"
+
 sudo: false
+dist: trusty
+
+addons:
+  chrome: stable
 
 cache:
   directories:
     - node_modules
 
 install:
-  - npm install
+  - npm ci
 
 script:
-  - node_modules/.bin/check-dependencies
-  - node_modules/.bin/eslint '**/*.js'
+  - npm run check && npm run lint
