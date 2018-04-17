@@ -1,0 +1,26 @@
+---
+language: node_js
+
+node_js:
+  - "stable"
+
+sudo: false
+dist: trusty
+
+addons:
+  chrome: stable
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - npm config set spin false
+  - npm install -g npm@^5.7
+  - npm --version
+
+install:
+  - npm ci
+
+script:
+  - npm run check && npm run lint
