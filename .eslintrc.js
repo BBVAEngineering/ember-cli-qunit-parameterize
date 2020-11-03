@@ -1,12 +1,55 @@
-'use strict';
-
 module.exports = {
 	root: true,
+	parser: 'babel-eslint',
 	parserOptions: {
-		ecmaVersion: 2017,
+		ecmaVersion: 2018,
+		sourceType: 'module',
+		ecmaFeatures: {
+			legacyDecorators: true
+		}
 	},
-	extends: 'eslint-config-bbva',
+	plugins: [
+		'ember',
+		'bbva'
+	],
+	extends: [
+		'eslint:recommended',
+		'plugin:ember/recommended',
+		'eslint-config-bbva'
+	],
 	env: {
-		node: true
-	}
+		browser: true
+	},
+	rules: {
+		'ember/no-jquery': 'error'
+	},
+	overrides: [{
+		files: [
+			'.huskyrc.js',
+			'.commitlintrc.js',
+			'.eslintrc.js',
+			'.template-lintrc.js',
+			'ember-cli-build.js',
+			'index.js',
+			'testem.js',
+			'blueprints/*/index.js',
+			'config/**/*.js',
+			'tests/dummy/config/**/*.js'
+		],
+		excludedFiles: [
+			'addon/**',
+			'addon-test-support/**',
+			'app/**',
+			'tests/dummy/app/**'
+		],
+		parserOptions: {
+			sourceType: 'script'
+		},
+		env: {
+			browser: false,
+			node: true
+		},
+		plugins: ['node'],
+		extends: ['plugin:node/recommended']
+	}]
 };
