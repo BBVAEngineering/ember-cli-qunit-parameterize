@@ -1,29 +1,16 @@
 ---
 language: node_js
-node_js:
-  # we recommend testing addons with the same minimum supported node version as Ember CLI
-  # so that your addon works for all apps
-  - "10"
-
+node_js: "10"
 dist: xenial
 
 addons:
   chrome: stable
 
-cache:
-  directories:
-    - $HOME/.npm
+cache: yarn
 
 env:
   global:
-    # See https://git.io/vdao3 for details.
     - JOBS=1
-
-branches:
-  only:
-    - master
-    # npm version tags
-    - /^v\d+\.\d+\.\d+/
 
 jobs:
   fast_finish: true
@@ -31,23 +18,22 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
   include:
-    # runs linting and tests with current locked deps
     - stage: "Tests"
-      name: "Tests"
+      before_install:
+        - npm install -g codecov
+        - npm install -g @commitlint/travis-cli
+        - yarn --version
       script:
-        - npm run lint
-        - npm run test:ember
+        - commitlint-travis
+        - yarn lint:js
+        - yarn lint:hbs
+        - yarn test
+        - yarn semantic-release --dry-run --branches=$TRAVIS_BRANCH
+      after_success:
+        - codecov --file=coverage/lcov.info
 
-    - stage: "Additional Tests"
-      name: "Floating Dependencies"
-      install:
-        - npm install --no-package-lock
-      script:
-        - npm run test:ember
-
-    # we recommend new addons test the current and previous LTS
-    # as well as latest stable release (bonus points to beta/canary)
-    - env: EMBER_TRY_SCENARIO=ember-lts-3.12
+    - stage: "Regression Tests"
+      env: EMBER_TRY_SCENARIO=ember-lts-3.12
     - env: EMBER_TRY_SCENARIO=ember-lts-3.16
     - env: EMBER_TRY_SCENARIO=ember-release
     - env: EMBER_TRY_SCENARIO=ember-beta
@@ -55,5 +41,21 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-default-with-jquery
     - env: EMBER_TRY_SCENARIO=ember-classic
 
+    - stage: "Release"
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: yarn semantic-release
+
+before_install:
+  - yarn --version
+
 script:
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
+
+stages:
+  - "Tests"
+  - "Regression Tests"
+  - name: "Release"
+    if: branch = master
