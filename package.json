@@ -5,9 +5,9 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "https://github.com/BBVAEngineering/ember-cli-qunit-parameterize.git",
   "license": "MIT",
-  "author": "",
+  "author": "BBVAEngineering",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -16,12 +16,12 @@
     "build": "ember build --environment=production",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:hbs": "ember-template-lint .",
-    "lint:js": "eslint --max-warnings 0 ./*.js addon app config tests",
+    "lint:js": "eslint --max-warnings 0 ./*.js addon-test-support config tests",
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "COVERAGE=true ember test",
-    "test:ember-compatibility": "ember try:each",
-    "check-coverage": "istanbul check-coverage coverage/coverage-final.json --statements 100 --branches 100 --functions 100 --lines 100",
+    "test-try": "ember try:each",
+    "check-coverage": "istanbul check-coverage coverage/coverage-final.json --statements 50 --branches 50 --functions 50 --lines 50",
     "commit": "git-cz",
     "posttest": "npm run report-coverage && npm run check-coverage && npm run validate-coverage",
     "report-coverage": "istanbul report --include=coverage/coverage-final.json text",

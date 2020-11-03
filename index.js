@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-	name: 'ember-qunit-parameterize',
+	name: require('./package').name
 };
