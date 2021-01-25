@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-qunit-parameterize",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Include qunit-parameterize into an ember-cli application for testing.",
   "main": "index.js",
   "scripts": {
