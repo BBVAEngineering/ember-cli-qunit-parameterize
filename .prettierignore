@@ -12,6 +12,7 @@
 
 # misc
 /coverage/
+/.nyc_output/
 !.*
 .eslintcache
 *.html
