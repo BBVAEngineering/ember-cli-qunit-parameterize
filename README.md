@@ -43,7 +43,6 @@ Do not forget to follow our [eslint](https://github.com/BBVAEngineering/javascri
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/BBVAEngineering/ember-cli-qunit-parameterize/tags).
 
-
 ## Authors
 
 See the list of [contributors](https://github.com/BBVAEngineering/ember-cli-qunit-parameterize/graphs/contributors) who participated in this project.
@@ -54,4 +53,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## References
 
-* [qunit-parameterize](https://github.com/AStepaniuk/qunit-parameterize)
+- [qunit-parameterize](https://github.com/AStepaniuk/qunit-parameterize)
