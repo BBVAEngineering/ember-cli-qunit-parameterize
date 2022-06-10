@@ -93,7 +93,7 @@
     "prettier": "^2.3.0",
     "qunit": "^2.15.0",
     "qunit-dom": "^1.6.0",
-    "semantic-release": "^17.4.4"
+    "semantic-release": "^19.0.3"
   },
   "bundledDependencies": [
     "qunit-parameterize"
